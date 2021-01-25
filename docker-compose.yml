@@ -1,0 +1,13 @@
+version: "3"
+services:
+  docker-ubuntu:
+    container_name: docker-ubuntu
+    build: .
+    ports:
+      # You may want to pass other common web app testing ports through
+      - "3000:3000"
+    volumes:
+      # Delegated mounts. More performance, less consistency.
+      # This isn't production so that's the right tradeoff
+      - ./shared:/root/shared:delegated
+      - ./data/db:/data/db:delegated
