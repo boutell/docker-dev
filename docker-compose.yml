@@ -1,7 +1,7 @@
 version: "3"
 services:
-  docker-ubuntu:
-    container_name: docker-ubuntu
+  docker-dev:
+    container_name: docker-dev
     build: .
     ports:
       # You may want to pass other common web app testing ports through
