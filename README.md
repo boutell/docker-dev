@@ -43,4 +43,5 @@ Included in the environment:
 We use this environment to develop [ApostropheCMS sites](https://apostrophecms.com) on Ubuntu Linux, avoiding any surprising differences between Mac and Linux environments.
 
 "Why does MongoDB run inside the container?" This makes it easier to run apps with their default settings and also ensures that the MongoDB CLI tools are available in the container. Remember, this is for **development,** so making people fuss with MongoDB URIs doesn't help.
+
 TODO: while the shared volume is set to "delegated" for best performance, it's still quite slow to `npm install` inside `./shared`. Consider `unison`, `docker_sync`, and other possibilities. Ignoring `node_modules` altogether from file synchronization would probably be a significant win.
