@@ -1,0 +1,14 @@
+#!/bin/bash
+
+which unison
+which unison-fsmonitor
+
+mongod &
+unison \
+  -repeat watch \
+  -copyonconflict \
+  -prefer newer \
+  -ignore 'Name {.DS_Store}' \
+  -ignore 'Name {node_modules}' \
+  "/root/projects" \
+  "/root/.sync"

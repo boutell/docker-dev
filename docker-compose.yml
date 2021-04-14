@@ -7,7 +7,7 @@ services:
       # You may want to pass other common web app testing ports through
       - "3000:3000"
     volumes:
-      # Delegated mounts. More performance, less consistency.
-      # This isn't production so that's the right tradeoff
-      - ./shared:/root/shared:delegated
+      # Delegated mounts. Favors predictability on the container side
+      # and slightly better performance
+      - ./projects:/root/.sync:delegated
       - ./data/db:/data/db:delegated
