@@ -54,8 +54,6 @@ We use this environment to develop [ApostropheCMS sites](https://apostrophecms.c
 
 "Why does MongoDB run inside the container?" This makes it easier to run apps with their default settings and also ensures that the MongoDB CLI tools are available in the container. Remember, this is for **development,** so making people fuss with MongoDB URIs doesn't help.
 
-TODO: while the shared volume is set to "delegated" for best performance, it's still quite slow to `npm install` inside `./shared`. Consider `unison`, `docker_sync`, and other possibilities. Ignoring `node_modules` altogether from file synchronization would probably be a significant win.
-
 ## Shortcuts
 
 The `./start`, `./up` and `./shell` scripts are handy shortcuts if you're on a MacOS or Linux host. For Windows you'll need to type the commands as shown above.
@@ -69,3 +67,5 @@ code in sync without crippling the performance of `npm install`, `webpack`, etc.
 Also, any folder named `node_modules` is **not synced**. This improves performance and there is no benefit to syncing them,
 since your host OS and the Linux-powered container usually cannot use the same packages without a fresh install command.
 
+For best results, **don't npm install on the host machine at all** when working in the `projects` folder. You can,
+but it will copy a lot of unnecessary files to the `.sync` folder in the container, only to be ignored by `unison`.
